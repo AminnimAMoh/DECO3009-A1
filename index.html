@@ -1,225 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
-  </head>
-  <body>
-    <a-scene fog="type: linear; color: #aaa; far: 200; near: 0">
-      <a-asset>
-        <a-asset-item
-          id="Sky"
-          src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FSky.png?v=1586064025551"
-        ></a-asset-item>
 
-        <a-asset-item
-          id="imageOne"
-          src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FImageOne.glb?v=1586088785090"
-        >
-        </a-asset-item>
+<head>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+</head>
 
-        <a-asset-item
-          id="boat"
-          src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FBoat-Animated.glb?v=1586091344257"
-        ></a-asset-item>
+<body>
+  <a-scene>
+    <a-asset>
+      <a-asset-item id="boat" src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FBoat-Final.glb?v=1585902328761"></a-asset-item>
+      <a-asset-item id="sea" src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FSea-Animated-5.glb?v=1585919415360">
+      </a-asset-item>
+      <a-asset-item id="tower-one" src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FTowerOne.glb?v=1585906800530"></a-asset-item>
+    </a-asset>
 
-        <a-asset-item>
-          <audio
-            id="oceanSound"
-            src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2Fzapsplat_nature_ocean_waves_surf_splash_rocks_gorge_mouth_top_cliff_43842.mp3?v=1586056732432"
-          ></audio>
-        </a-asset-item>
-        <a-asset-item
-          id="tower-one"
-          src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FTowerOne.glb?v=1585906800530"
-        ></a-asset-item>
+    <a-entity position="0 -2 -1.5" scale="1 1 1" rotation="0 -0 0" gltf-model="#boat"></a-entity>
 
-        <a-asset-item
-          id="tower-two"
-          src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FCity.glb?v=1586086849907"
-        ></a-asset-item>
+    <a-entity position="0 -5 0" scale="7 7 7" rotation="0 -0 0" gltf-model="#sea" animation-mixer="clip: "></a-entity>
 
-        <a-asset-item
-          id="SeaBed"
-          src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FSeaBed.glb?v=1586060446321"
-        ></a-asset-item>
+    <a-entity position="-100 -22 -200" scale="1 1 1" rotation="45 45 0" gltf-model="#tower-one"></a-entity>
 
-        <a-asset-item
-          id="buttle"
-          src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FButtle-2.glb?v=1586053698443"
-        ></a-asset-item>
+    <a-sky scale="1 1 1" src="https://cdn.glitch.com/77543841-3d33-42b6-b11e-7c1c88debdd1%2Fd0a61217-8dd6-4aca-8ed3-39e346dbde6e_equirectangular.jpg?v=1585737512485"></a-sky>
 
-        <a-asset-item
-          id="SeaLight"
-          src="https://cdn.glitch.com/fa21642a-40f9-47a4-a95a-2cb552458ebd%2FSeaLight.glb?v=1586141226951"
-        ></a-asset-item>
-      </a-asset>
-      <a-entity light="type: ambient; color: #fff"></a-entity>
-      <a-entity
-        sound="src: #oceanSound; autoplay:true"
-        position="0 0 0"
-      ></a-entity>
 
-      <a-entity
-        light="type: point; intensity: 2; distance: 50; angle:-180;decay: 2; color:red"
-        position="10 0 10"
-        material="fog: false"
-        id="mylight"
-      ></a-entity>
-      <a-entity
-        gltf-model="#SeaLight"
-        position="10 0 10"
-        material="fog: false"
-        animation-mixer="clip:"
-      ></a-entity>
+    <!--       <a-entity
+        camera
+        look-controls
+        position="0 3.5 2"
+        rotation="90 0 0"
+      ></a-entity> -->
+  </a-scene>
+</body>
 
-      <a-entity
-        id="myBoat"
-        position="0 .2 -1.5"
-        scale="1 1 1"
-        rotation="0 -0 0"
-        gltf-model="#boat"
-        animation-mixer="clip:"
-      ></a-entity>
-
-      <a-entity
-        id="ocean"
-        ocean="density: 200; width: 600; depth: 600; speed: 10"
-        material="color: #004561; opacity: 0.95; metalness: 0; roughness: 1"
-        rotation="-90 0 0"
-      ></a-entity>
-
-      <a-entity
-        position="-100 -120 -100"
-        scale="1 1 1"
-        rotation="0 0 0"
-        gltf-model="#SeaBed"
-      ></a-entity>
-
-      <a-entity
-        position="-120 -5 -110"
-        scale="1 1 1"
-        rotation="0 0 0"
-        gltf-model="#tower-one"
-      ></a-entity>
-
-      <a-entity
-        id="buildings"
-        position="-150 -60 -200"
-        scale="1 1 1"
-        rotation="0 -90 0"
-        gltf-model="#tower-two"
-      ></a-entity>
-
-      <a-entity
-        id="hello"
-        position="20 -.9 -20"
-        scale="20 20 20"
-        rotation="30 30 0"
-        gltf-model="#buttle"
-        animation-mixer="clip:"
-      ></a-entity>
-
-      <a-entity
-        id="image-One"
-        position="0 4.2 -1"
-        scale="0 0 0"
-        rotation="0 90 0"
-        gltf-model="#imageOne"
-      >
-        <a-plane
-          id="exit"
-          color="red"
-          height="0.02"
-          width="0.02"
-          position=".25 -.01 0"
-          rotation="0 -90 0"
-          opacity="0"
-        ></a-plane>
-
-        <a-box
-          position="-.25 0 0"
-          scale=".003 .003 .03"
-          rotation="45 0 0"
-          color="red"
-        ></a-box>
-        <a-box
-          position="-.25 0 0"
-          scale=".003 .003 .03"
-          rotation="-45 0 0"
-          color="red"
-        ></a-box>
-      </a-entity>
-
-      <a-plane
-        id="home"
-        color="red"
-        height="100"
-        width="100"
-        position="0 0 0"
-        rotation="0 -90 0"
-        opacity="0"
-      ></a-plane>
-
-      <a-sky metalness="1" position="0 -10 0" src="#Sky"> </a-sky>
-
-      <a-entity id="cam" position="0 2.6 0">
-        <a-camera>
-          <a-cursor
-            id="screenCursor"
-            scale="1 1 1"
-            material="color: black; shader: flat"
-            geometry="primitive: ring"
-            animation__mouseenter="property: scale; startEvents: mouseenter; easing: easeInCubic; dur: 150; from: 3 3 3; to: 1 1 1"
-            animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 3 3 3; to: 1 1 1"
-            animation__mousereset="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 1 1 1; to: 3 3 3"
-            animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 3 3 3"
-          >
-          </a-cursor>
-        </a-camera>
-      </a-entity>
-    </a-scene>
-  </body>
-  <script>
-    var myButtle = document.querySelector("#hello");
-    var pointer = document.querySelector("#screenCursor");
-    var image = document.querySelector("#image-One");
-    var close = document.querySelector("#closebox");
-    var city = document.querySelector("#buildings");
-    var myCam = document.querySelector("#cam");
-    var boat = document.querySelector("#myBoat");
-    var exitB = document.querySelector("#exit");
-    var back = document.querySelector("#home");
-    var pLight = document.querySelector("#mylight");
-
-    myButtle.addEventListener("mouseenter", function() {
-      myButtle.setAttribute("animation-mixer", "clip", "None");
-      image.setAttribute("scale", "3 3 3");
-    });
-
-    myButtle.addEventListener("mouseleave", function() {
-      myButtle.setAttribute("animation-mixer", "clip", "");
-    });
-
-    exitB.addEventListener("mouseenter", function() {
-      console.log("hello");
-      pointer.setAttribute("scale", "3 3 3");
-      image.setAttribute("scale", "0 0 0");
-    });
-
-    back.addEventListener("click", function() {
-      myCam.setAttribute("position", "0 2.6 0");
-      boat.setAttribute("position", "0 .2 -1.5");
-      pLight.setAttribute("light", "intensity", "1");
-    });
-
-    city.addEventListener("click", function() {
-      myCam.setAttribute("position", "-160 2.6 -100");
-      boat.setAttribute("position", "-160 .2 -102");
-      pLight.setAttribute("light", "intensity", "10000");
-      pLight.setAttribute("light", "distance", "100");
-    });
-  </script>
 </html>
